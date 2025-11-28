@@ -1,19 +1,7 @@
--- Auto-generated from schema-views-postgres.psd1 (map@62c9c93)
--- engine: postgres
--- table:  deletion_jobs_status
--- Deletion jobs summary
-CREATE OR REPLACE VIEW vw_deletion_jobs_status AS
-SELECT
-  status,
-  COUNT(*) AS jobs,
-  MAX(finished_at) AS last_finished
-FROM deletion_jobs
-GROUP BY status
-ORDER BY status;
-
--- Auto-generated from schema-views-postgres.psd1 (map@62c9c93)
+-- Auto-generated from schema-views-postgres.psd1 (map@mtime:2025-11-27T15:36:13Z)
 -- engine: postgres
 -- table:  deletion_jobs
+
 -- Contract view for [deletion_jobs]
 CREATE OR REPLACE VIEW vw_deletion_jobs AS
 SELECT
@@ -30,4 +18,3 @@ SELECT
   created_by,
   created_at
 FROM deletion_jobs;
-
