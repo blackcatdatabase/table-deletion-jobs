@@ -17,7 +17,7 @@ use BlackCat\Database\Support\DtoHydrator;
 final class DeletionJobDtoMapper
 {
     /** @var array<string,string> Column -> DTO property */
-    private const COL_TO_PROP = [ 'entity_table' => 'entityTable', 'entity_pk' => 'entityPk', 'hard_delete' => 'hardDelete', 'scheduled_at' => 'scheduledAt', 'started_at' => 'startedAt', 'finished_at' => 'finishedAt', 'created_by' => 'createdBy', 'created_at' => 'createdAt' ];
+    private const COL_TO_PROP = [ 'id' => 'id', 'entity_table' => 'entityTable', 'entity_pk' => 'entityPk', 'reason' => 'reason', 'hard_delete' => 'hardDelete', 'scheduled_at' => 'scheduledAt', 'started_at' => 'startedAt', 'finished_at' => 'finishedAt', 'status' => 'status', 'error' => 'error', 'created_by' => 'createdBy', 'created_at' => 'createdAt' ];
 
     /** @var string[] */
     private const BOOL_COLS   = [ 'hard_delete' ];
@@ -39,13 +39,8 @@ final class DeletionJobDtoMapper
 
     private static function tz(): DateTimeZone
     {
-        if (self::$tzObj instanceof DateTimeZone) {
-            return self::$tzObj;
-        }
-        try {
+        if (!(self::$tzObj instanceof DateTimeZone)) {
             self::$tzObj = new DateTimeZone(self::TZ);
-        } catch (\Throwable) {
-            self::$tzObj = new DateTimeZone('UTC');
         }
         return self::$tzObj;
     }
