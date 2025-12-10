@@ -97,8 +97,8 @@ _No engine differences detected._
 
 ## Constraints Snapshot
 - `created_at` – default=CURRENT_TIMESTAMP(6)
-- `status` – default=pending, enum
 - `hard_delete` – default=FALSE
+- `status` – default=pending, enum
 
 ## Schema Files
 | File | Engine |
