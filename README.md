@@ -96,9 +96,9 @@ graph LR
 _No engine differences detected._
 
 ## Constraints Snapshot
-- `created_at` – default=CURRENT_TIMESTAMP(6)
 - `hard_delete` – default=FALSE
 - `status` – default=pending, enum
+- `created_at` – default=CURRENT_TIMESTAMP(6)
 
 ## Schema Files
 | File | Engine |
