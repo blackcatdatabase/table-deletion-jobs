@@ -5,18 +5,18 @@ Asynchronous deletion workflows coordinating cascading cleanup.
 ## Columns
 | Column | Type | Null | Default | Description |
 | --- | --- | --- | --- | --- |
-| created_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |
-| created_by | BIGINT | YES |  | User/admin that created the job. |
-| entity_pk | VARCHAR(64) | NO |  | Primary key of the row to delete. |
-| entity_table | VARCHAR(64) | NO |  | Target table for the deletion. |
-| error | TEXT | YES |  | Failure description, if any. |
-| finished_at | DATETIME(6) | YES |  | Completion timestamp (UTC). |
-| hard_delete | BOOLEAN | NO | FALSE | Whether to permanently delete the row. |
 | id | BIGINT | NO |  | Surrogate primary key. |
+| entity_table | VARCHAR(64) | NO |  | Target table for the deletion. |
+| entity_pk | VARCHAR(64) | NO |  | Primary key of the row to delete. |
 | reason | TEXT | YES |  | Reason the deletion was requested. |
+| hard_delete | BOOLEAN | NO | FALSE | Whether to permanently delete the row. |
 | scheduled_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | YES |  | When the job should start. |
 | started_at | DATETIME(6) | YES |  | Processing start timestamp (UTC). |
+| finished_at | DATETIME(6) | YES |  | Completion timestamp (UTC). |
 | status | mysql: ENUM('pending','running','done','failed','cancelled') / postgres: TEXT | NO | pending | Job status flag. (enum: pending, running, done, failed, cancelled) |
+| error | TEXT | YES |  | Failure description, if any. |
+| created_by | BIGINT | YES |  | User/admin that created the job. |
+| created_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |
 
 ## Engine Details
 
