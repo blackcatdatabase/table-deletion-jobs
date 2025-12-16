@@ -5,18 +5,18 @@ Asynchronous deletion workflows coordinating cascading cleanup.
 ## Columns
 | Column | Type | Null | Default | Description |
 | --- | --- | --- | --- | --- |
-| created_at | DATETIME(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |
-| created_by | BIGINT | YES |  | User/admin that created the job. |
-| entity_pk | VARCHAR(64) | NO |  | Primary key of the row to delete. |
-| entity_table | VARCHAR(64) | NO |  | Target table for the deletion. |
-| error | TEXT | YES |  | Failure description, if any. |
-| finished_at | DATETIME(6) | YES |  | Completion timestamp (UTC). |
-| hard_delete | BOOLEAN | NO | FALSE | Whether to permanently delete the row. |
 | id | BIGINT | NO |  | Surrogate primary key. |
+| entity_table | VARCHAR(64) | NO |  | Target table for the deletion. |
+| entity_pk | VARCHAR(64) | NO |  | Primary key of the row to delete. |
 | reason | TEXT | YES |  | Reason the deletion was requested. |
-| scheduled_at | DATETIME(6) | YES |  | When the job should start. |
+| hard_delete | BOOLEAN | NO | FALSE | Whether to permanently delete the row. |
+| scheduled_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | YES |  | When the job should start. |
 | started_at | DATETIME(6) | YES |  | Processing start timestamp (UTC). |
-| status | ENUM('pending','running','done','failed','cancelled') | NO | pending | Job status flag. (enum: pending, running, done, failed, cancelled) |
+| finished_at | DATETIME(6) | YES |  | Completion timestamp (UTC). |
+| status | mysql: ENUM('pending','running','done','failed','cancelled') / postgres: TEXT | NO | pending | Job status flag. (enum: pending, running, done, failed, cancelled) |
+| error | TEXT | YES |  | Failure description, if any. |
+| created_by | BIGINT | YES |  | User/admin that created the job. |
+| created_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |
 
 ## Engine Details
 
@@ -61,7 +61,7 @@ Foreign keys:
 ## Views
 | View | Engine | Flags | File |
 | --- | --- | --- | --- |
-| vw_deletion_jobs | mysql | algorithm=MERGE, security=INVOKER | [schema\040_views.mysql.sql](schema\040_views.mysql.sql) |
-| vw_deletion_jobs_status | mysql | algorithm=TEMPTABLE, security=INVOKER | [schema\040_views_joins.mysql.sql](schema\040_views_joins.mysql.sql) |
-| vw_deletion_jobs | postgres |  | [schema\040_views.postgres.sql](schema\040_views.postgres.sql) |
-| vw_deletion_jobs_status | postgres |  | [schema\040_views_joins.postgres.sql](schema\040_views_joins.postgres.sql) |
+| vw_deletion_jobs | mysql | algorithm=MERGE, security=INVOKER | [../schema/040_views.mysql.sql](../schema/040_views.mysql.sql) |
+| vw_deletion_jobs_status | mysql | algorithm=TEMPTABLE, security=INVOKER | [../schema/040_views_joins.mysql.sql](../schema/040_views_joins.mysql.sql) |
+| vw_deletion_jobs | postgres |  | [../schema/040_views.postgres.sql](../schema/040_views.postgres.sql) |
+| vw_deletion_jobs_status | postgres |  | [../schema/040_views_joins.postgres.sql](../schema/040_views_joins.postgres.sql) |
