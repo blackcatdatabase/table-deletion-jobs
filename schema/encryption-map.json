@@ -1,0 +1,44 @@
+{
+  "tables": {
+    "deletion_jobs": {
+      "columns": {
+        "created_at": {
+          "strategy": "passthrough"
+        },
+        "created_by": {
+          "strategy": "passthrough"
+        },
+        "entity_pk": {
+          "strategy": "passthrough"
+        },
+        "entity_table": {
+          "strategy": "passthrough"
+        },
+        "error": {
+          "strategy": "passthrough"
+        },
+        "finished_at": {
+          "strategy": "passthrough"
+        },
+        "hard_delete": {
+          "strategy": "passthrough"
+        },
+        "id": {
+          "strategy": "passthrough"
+        },
+        "reason": {
+          "strategy": "passthrough"
+        },
+        "scheduled_at": {
+          "strategy": "passthrough"
+        },
+        "started_at": {
+          "strategy": "passthrough"
+        },
+        "status": {
+          "strategy": "passthrough"
+        }
+      }
+    }
+  }
+}
