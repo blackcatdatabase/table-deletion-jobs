@@ -252,6 +252,7 @@ use OrderByTools, PkTools, RepositoryHelpers;
           ));
           if (!$rows) { return 0; }
 
+          /** @var list<string> $updCols */
           $updCols = [ 'reason', 'hard_delete', 'scheduled_at', 'started_at', 'finished_at', 'status', 'error', 'created_by' ];
           if ($updCols && $soft && !in_array($soft, $updCols, true)) { $updCols[] = $soft; }
 
